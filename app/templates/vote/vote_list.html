@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>vote:post-list</h1>
+    {% for team in team_list %}
+        <div class="container-fluid mt-5">
+            <div class="card text-center p-5">
+                <a href="{% url 'vote:vote-detail' pk=team.pk %}">{{ team.name }}</a>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
