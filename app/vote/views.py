@@ -1,3 +1,4 @@
+from django.contrib.auth import logout
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -76,5 +77,9 @@ def stat(request):
         't5_f': score_list[5][0], 't5_c': score_list[5][1], 't5_i': score_list[5][2], 't5_n': score_list[5][3],
         't5_t': score_list[5][4], 't5_cnt': score_list[0][4],
     }
-
     return render(request, 'vote/stat.html', context)
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('vote:vote-list')

@@ -4,10 +4,11 @@
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
 {% endblock %}
 {% block content %}
-    <div class="container-fluid ">
-        <div class="mr-auto ml-auto mt-3 col-lg-4 col-md-6 col-sm-8 col-10">
+    <div class="container-fluid row justify-content-md-center">
+        <div class="card text-center p-4 col-5">
             <div class="top-box card text-center p-4 mb-5">
-                <h1>SuperStar D</h1>
+                <h1 class="text-primary">SuperStar D</h1>
+                <h4 class="text-secondary">WPS 12th / First Hackathon</h4>
                 <div>
                     <form method="POST" class="mt-3">
                         {% csrf_token %}
@@ -25,7 +26,7 @@
                             </ul>
                         {% endif %}
                         <!--버튼-->
-                        <button type="submit" class="btn btn-primary btn-block">로그인</button>
+                        <button type="submit" class="btn btn-dark btn-block">로그인</button>
                     </form>
                 </div>
             </div>
