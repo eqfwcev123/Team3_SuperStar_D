@@ -42,4 +42,4 @@ def signup_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('signup')
+    return redirect('member:login')

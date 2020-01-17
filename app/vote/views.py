@@ -14,7 +14,7 @@ def vote_list_view(request):
             if item['user_id'] == request.user.pk:
                 num_list.append(item['team_id'])
     num_list = list(set(num_list))
-    print(num_list)
+
     for num in num_list:
         team = team.exclude(pk=num)
     context = {
@@ -82,4 +82,4 @@ def stat(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('vote:vote-list')
+    return redirect('member:login')

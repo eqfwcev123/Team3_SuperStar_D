@@ -8,21 +8,24 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm card text-center p-4">
-                        <a type="button" class="btn btn-outline-danger btn-lg" href="{% url 'member:login' %}">로그아웃</a>
+                        <a type="button" class="btn btn-outline-danger btn-lg" href="{% url 'member:logout' %}">로그아웃</a>
                     </div>
                     <div class="col-sm card text-center p-4">
                         <a type="button" class="btn btn-outline-primary btn-lg" href="{% url 'vote:stat' %}">결과보기</a>
                     </div>
                 </div>
             </div>
-
-            {% for team in team_list %}
-                <div class="container-fluid mt-4">
-                    <div class="card text-center p-3">
-                        <a class="btn btn-dark" href="{% url 'vote:vote-detail' pk=team.pk %}">{{ team.name }}</a>
+            {% if team_list %}
+                {% for team in team_list %}
+                    <div class="container-fluid mt-4">
+                        <div class="card text-center p-3">
+                            <a class="btn btn-dark" href="{% url 'vote:vote-detail' pk=team.pk %}">{{ team.name }}</a>
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            {% else %}
+                <h1 class="text-success mt-5">투표를 모두 다 하셨습니다.<br> 결과를 확인하세요!</h1>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
