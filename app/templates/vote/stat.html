@@ -1,7 +1,125 @@
 {% extends 'base.html' %}
 {% block content %}
     <h1>통계</h1>
-    {% for field in team_list %}
-        <div>{{ field.fresh }}</div>
-    {% endfor %}
+    <div class="accordion" id="accordionExample">
+    <div class="card m-3 ">
+        <div class="card-header bg-dark" id="headingOne">
+            <h2 class="mb-0">
+                <button class="btn btn-dark btn-block" type="button" data-toggle="collapse" data-target="#collapseOne"
+                        aria-expanded="true" aria-controls="collapseOne">
+                    1조
+                </button>
+            </h2>
+        </div>
+
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                <div class="border-dark card m-5 p-5">
+                    <h5 class="card-title">Team1</h5>
+                    <span class="font-weight-bold">참신함 {{ t1_f }}</span>
+                    <span class="font-weight-bold">완성도 {{ t1_c }}</span>
+                    <span class="font-weight-bold">흥미도 {{ t1_i }}</span>
+                    <span class="font-weight-bold">필요성 {{ t1_n }}</span>
+                    <span class="font-weight-bold">평균 {{ t1_t }}</span>
+                    <span class="font-weight-bold">투표인원 {{ t1_cnt }}/16</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card m-3">
+        <div class="card-header bg-dark" id="headingTwo">
+            <h2 class="mb-0">
+                <button class="btn btn-dark btn-block collapsed" type="button" data-toggle="collapse"
+                        data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    2조
+                </button>
+            </h2>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body">
+                <div class="border-dark card m-5 p-5">
+                    <h5 class="card-title">Team2</h5>
+                    <span class="font-weight-bold">참신함 {{ t2_f }}</span>
+                    <span class="font-weight-bold">완성도 {{ t2_c }}</span>
+                    <span class="font-weight-bold">흥미도 {{ t2_i }}</span>
+                    <span class="font-weight-bold">필요성 {{ t2_n }}</span>
+                    <span class="font-weight-bold">평균 {{ t2_t }}</span>
+                    <span class="font-weight-bold">투표인원 {{ t2_cnt }}/15</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card m-3">
+        <div class="card-header bg-dark" id="headingThree">
+            <h2 class="mb-0">
+                <button class="btn btn-dark btn-block collapsed" type="button" data-toggle="collapse"
+                        data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    3조
+                </button>
+            </h2>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+            <div class="card-body">
+                <div class="border-dark card m-5 p-5">
+                    <h5 class="card-title">Team3</h5>
+                    <span class="font-weight-bold">참신함 {{ t3_f }}</span>
+                    <span class="font-weight-bold">완성도 {{ t3_c }}</span>
+                    <span class="font-weight-bold">흥미도 {{ t3_i }}</span>
+                    <span class="font-weight-bold">필요성 {{ t3_n }}</span>
+                    <span class="font-weight-bold">평균 {{ t3_t }}</span>
+                    <span class="font-weight-bold">투표인원 {{ t3_cnt }}/15</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card m-3">
+        <div class="card-header bg-dark" id="headingFour">
+            <h2 class="mb-0">
+                <button class="btn btn-dark btn-block collapsed" type="button" data-toggle="collapse"
+                        data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    4조
+                </button>
+            </h2>
+        </div>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+            <div class="card-body">
+                <div class="border-dark card m-5 p-5">
+                    <h5 class="card-title">Team4</h5>
+                    <span class="font-weight-bold">참신함 {{ t4_f }}</span>
+                    <span class="font-weight-bold">완성도 {{ t4_c }}</span>
+                    <span class="font-weight-bold">흥미도 {{ t4_i }}</span>
+                    <span class="font-weight-bold">필요성 {{ t4_n }}</span>
+                    <span class="font-weight-bold">평균 {{ t4_t }}</span>
+                    <span class="font-weight-bold">투표인원 {{ t4_cnt }}/15</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card m-3">
+        <div class="card-header bg-dark" id="headingFive">
+            <h2 class="mb-0">
+                <button class="btn btn-dark btn-block collapsed" type="button" data-toggle="collapse"
+                        data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                    5조
+                </button>
+            </h2>
+        </div>
+        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+            <div class="card-body">
+                <div class="border-dark card m-5 p-5">
+                    <h5 class="card-title">Team5</h5>
+                    <span class="font-weight-bold">참신함 {{ t5_f }}</span>
+                    <span class="font-weight-bold">완성도 {{ t5_c }}</span>
+                    <span class="font-weight-bold">흥미도 {{ t5_i }}</span>
+                    <span class="font-weight-bold">필요성 {{ t5_n }}</span>
+                    <span class="font-weight-bold">평균 {{ t5_t }}</span>
+                    <span class="font-weight-bold">투표인원 {{ t5_cnt }}/15</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
+
+
+
