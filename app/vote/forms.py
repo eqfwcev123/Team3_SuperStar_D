@@ -4,7 +4,7 @@ from django import forms
 class QuestionForm(forms.Form):
     fresh = forms.ChoiceField(
         label='참신함',
-        widget=forms.RadioSelect(
+        widget=forms.Select(
             attrs={
                 'class': 'form-control'
             }),
@@ -18,7 +18,7 @@ class QuestionForm(forms.Form):
 
     complete = forms.ChoiceField(
         label='완성도',
-        widget=forms.RadioSelect(
+        widget=forms.Select(
             attrs={
                 'class': 'form-control'
             }),
@@ -32,7 +32,7 @@ class QuestionForm(forms.Form):
 
     interest = forms.ChoiceField(
         label='흥미도',
-        widget=forms.RadioSelect(
+        widget=forms.Select(
             attrs={
                 'class': 'form-control'
             }),
@@ -46,7 +46,7 @@ class QuestionForm(forms.Form):
 
     need = forms.ChoiceField(
         label='필요성',
-        widget=forms.RadioSelect(
+        widget=forms.Select(
             attrs={
                 'class': 'form-control'
             }),
