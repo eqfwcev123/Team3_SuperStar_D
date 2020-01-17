@@ -1,4 +1,5 @@
 from django import forms
+from django.conf import settings
 from django.contrib.auth import authenticate, login
 from django.core.exceptions import ValidationError
 
@@ -10,7 +11,7 @@ class LoginForm(forms.Form):
         widget=forms.TextInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': '사용자 이름',
+                'placeholder': '아이디',
             }
         )
     )
@@ -39,15 +40,6 @@ class LoginForm(forms.Form):
 
 
 class SignupForm(forms.Form):
-    email = forms.EmailField(
-        label='이메일',
-        widget=forms.EmailInput(
-            attrs={
-                'placeholder': '이메일 주소',
-                'class': "form-control",
-            }
-        )
-    )
     name = forms.CharField(
         max_length=20,
         widget=forms.TextInput(
@@ -61,7 +53,7 @@ class SignupForm(forms.Form):
         max_length=20,
         widget=forms.TextInput(
             attrs={
-                'placeholder': '사용자 이름',
+                'placeholder': '아이디',
                 'class': "form-control",
             }
         )
@@ -74,12 +66,19 @@ class SignupForm(forms.Form):
             }
         )
     )
-
-    def clean_email(self):
-        email = self.cleaned_data['email']
-        if User.objects.filter(email=email).exists():
-            raise ValidationError('이미 사용 중인 email입니다.')
-        return email
+    team_name = forms.ChoiceField(
+        label='팀선택',
+        widget=forms.Select(
+            attrs={
+                'class': 'form-control'
+            }),
+        choices=[(1, 'Team1'),
+                 (2, 'Team2'),
+                 (3, 'Team3'),
+                 (4, 'Team4'),
+                 (5, 'Team5'),
+                 (6, 'Staff'), ]
+    )
 
     def clean_username(self):
         username = self.cleaned_data['username']
@@ -87,10 +86,20 @@ class SignupForm(forms.Form):
             raise ValidationError('이미 사용 중인 username입니다.')
         return username
 
+    def clean_name(self):
+        name = self.cleaned_data['name']
+        for team in settings.FASTCAMPUS:
+            print(team)
+            if name in team:
+                if User.objects.filter(name=name).exists():
+                    raise ValidationError('이미 가입된 이름입니다')
+                return name
+        raise ValidationError('사용할수 없는 이름입니다. 실명으로 다시 입력해 주세요')
+
     def save(self):
         return User.objects.create_user(
+            team_name=self.cleaned_data['team_name'],
             username=self.cleaned_data['username'],
-            email=self.cleaned_data['email'],
             name=self.cleaned_data['name'],
             password=self.cleaned_data['password'],
         )
