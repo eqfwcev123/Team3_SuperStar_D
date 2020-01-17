@@ -2,4 +2,16 @@
 {% block content %}
     <h1>vote:post-detail</h1>
     <h1>{{ pk }}</h1>
+    <form action="{% url 'vote:vote-detail' pk=pk %}" method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="container-fluid">
+                <div>{{ field.label }}</div>
+                <div class="form-group">
+                    {{ field }}
+                </div>
+            </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">제출</button>
+    </form>
 {% endblock %}
