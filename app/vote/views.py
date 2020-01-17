@@ -1,3 +1,4 @@
+from django.contrib.auth import logout
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -37,13 +38,17 @@ def stat(request):
     total = 0
 
     for team in Team.objects.exclude(pk=6):
-        for index, item in enumerate(team.relation_set.values('fresh','team_id')):
+        for index, item in enumerate(team.relation_set.values('fresh', 'team_id')):
             print(index, item['fresh'], item['team_id'])
             # print(f'팀{i}fresh 는 {item["fresh"]}')
             # total += item['fresh']
-
 
     # context = {
     #     'team_list': team_list
     # }
     return render(request, 'vote/stat.html')
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('vote:vote-list')
